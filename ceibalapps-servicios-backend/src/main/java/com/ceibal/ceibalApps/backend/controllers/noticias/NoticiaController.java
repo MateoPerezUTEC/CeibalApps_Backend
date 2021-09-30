@@ -1,4 +1,4 @@
-package com.ceibal.ceibalApps.backend.noticias.controllers;
+package com.ceibal.ceibalApps.backend.controllers.noticias;
 
 import java.util.List;
 
@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ceibal.ceibalApps.backend.noticias.models.entity.Noticia;
-import com.ceibal.ceibalApps.backend.noticias.models.service.NoticiaService;
+import com.ceibal.ceibalApps.backend.models.entities.noticias.Noticia;
+import com.ceibal.ceibalApps.backend.models.services.noticias.NoticiaService;
 
 @RestController
 public class NoticiaController {

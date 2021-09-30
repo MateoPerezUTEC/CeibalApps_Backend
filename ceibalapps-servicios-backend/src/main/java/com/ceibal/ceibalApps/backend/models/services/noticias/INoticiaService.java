@@ -1,8 +1,8 @@
-package com.ceibal.ceibalApps.backend.noticias.models.service;
+package com.ceibal.ceibalApps.backend.models.services.noticias;
 
 import java.util.List;
 
-import com.ceibal.ceibalApps.backend.noticias.models.entity.Noticia;
+import com.ceibal.ceibalApps.backend.models.entities.noticias.Noticia;
 
 public interface INoticiaService {
 	
