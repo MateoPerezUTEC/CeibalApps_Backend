@@ -1,4 +1,4 @@
-package com.ceibal.ceibalApps.backend.models.services.noticias;
+package com.ceibal.ceibalApps.backend.noticias.models.service;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ceibal.ceibalApps.backend.models.dao.noticias.NoticiaDao;
-import com.ceibal.ceibalApps.backend.models.entities.noticias.Noticia;
+import com.ceibal.ceibalApps.backend.noticias.models.dao.NoticiaDao;
+import com.ceibal.ceibalApps.backend.noticias.models.entity.Noticia;
 
 @Service
 public class NoticiaService implements INoticiaService{

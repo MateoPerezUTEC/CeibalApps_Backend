@@ -1,4 +1,4 @@
-package com.ceibal.ceibalApps.backend.models.entities.noticias;
+package com.ceibal.ceibalApps.backend.noticias.models.entity;
 
 import java.io.Serializable;
 import java.util.Date;
