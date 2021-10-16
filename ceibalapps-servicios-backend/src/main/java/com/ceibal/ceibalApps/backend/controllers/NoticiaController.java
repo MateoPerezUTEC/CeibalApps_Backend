@@ -1,5 +1,9 @@
-package com.ceibal.ceibalApps.backend.noticias.controllers;
+package com.ceibal.ceibalApps.backend.controllers;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +17,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ceibal.ceibalApps.backend.noticias.models.entity.Noticia;
-import com.ceibal.ceibalApps.backend.noticias.models.service.NoticiaService;
+import com.ceibal.ceibalApps.backend.models.entity.Noticia;
+import com.ceibal.ceibalApps.backend.models.service.NoticiaService;
 
 @RestController
 public class NoticiaController {
@@ -37,6 +41,8 @@ public class NoticiaController {
 	@PostMapping("/api/noticias/crear")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Noticia crear(@RequestBody Noticia noticia) {
+		Date now = new Date();
+		   noticia.setFechaCreacion(now);
 		return noticiaService.save(noticia);
 		
 	}
