@@ -1,5 +1,9 @@
 package com.ceibal.ceibalApps.backend.controllers;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +41,8 @@ public class NoticiaController {
 	@PostMapping("/api/noticias/crear")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Noticia crear(@RequestBody Noticia noticia) {
+		Date now = new Date();
+		   noticia.setFechaCreacion(now);
 		return noticiaService.save(noticia);
 		
 	}
