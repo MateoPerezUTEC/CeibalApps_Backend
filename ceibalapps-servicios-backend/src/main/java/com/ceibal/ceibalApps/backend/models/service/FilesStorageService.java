@@ -32,7 +32,7 @@ public class FilesStorageService implements IFilesStorageService {
 		try {
 			Files.copy(file.getInputStream(), this.root.resolve(file.getOriginalFilename()));
 		} catch (Exception e) {
-			throw new RuntimeException("Could not store the file. Error: " + e.getMessage());
+			throw new RuntimeException("Could not store   the file. Error: " + e.getMessage());
 		}
 	}
 

@@ -30,7 +30,7 @@ import com.ceibal.ceibalApps.backend.models.service.FilesStorageService;
 
 
 @Controller
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.DELETE,RequestMethod.PUT}, maxAge = 3600)
 public class FilesController {
 
 	@Autowired
