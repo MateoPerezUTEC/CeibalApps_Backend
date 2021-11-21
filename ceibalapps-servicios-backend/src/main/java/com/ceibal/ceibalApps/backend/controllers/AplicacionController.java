@@ -47,9 +47,21 @@ public class AplicacionController {
 	public Aplicacion crear(@RequestBody Aplicacion aplicacion) {
 		Date now = new Date();
 		   aplicacion.setFechaCreacion(now);
-		   aplicacion.setIcono("http://localhost:6001/api/images/"+aplicacion.getIcono());
-		   aplicacion.setApk("http://localhost:6001/api/files/"+aplicacion.getApk());
-		   aplicacion.setBanner("http://localhost:6001/api/images/"+aplicacion.getBanner());
+		   if(aplicacion.getBanner().contains("http://localhost:6001/api/images")) {
+				aplicacion.setBanner(aplicacion.getBanner());
+			}else {
+				aplicacion.setBanner("http://localhost:6001/api/images/"+aplicacion.getBanner());	
+			}
+		   if(aplicacion.getIcono().contains("http://localhost:6001/api/images")) {
+				aplicacion.setIcono(aplicacion.getIcono());
+			}else {
+				aplicacion.setIcono("http://localhost:6001/api/images/"+aplicacion.getIcono());	
+			}
+		   if(aplicacion.getApk().contains("http://localhost:6001/api/files")) {
+				aplicacion.setApk(aplicacion.getApk());
+			}else {
+				aplicacion.setApk("http://localhost:6001/api/files/"+aplicacion.getApk());	
+			}
 		return aplicacionService.save(aplicacion);
 		
 	}
@@ -58,12 +70,27 @@ public class AplicacionController {
 	@ResponseStatus(HttpStatus.CREATED)
 	public Aplicacion editar(@RequestBody Aplicacion aplicacion, @PathVariable Long id) {
 		Aplicacion aplicacionDb = aplicacionService.findById(id);
-		aplicacionDb.setApk(aplicacion.getApk());
+		if(aplicacion.getBanner().contains("http://localhost:6001/api/images")) {
+			aplicacionDb.setBanner(aplicacion.getBanner());
+		}else {
+			aplicacionDb.setBanner("http://localhost:6001/api/images/"+aplicacion.getBanner());	
+		}
+	   if(aplicacion.getIcono().contains("http://localhost:6001/api/images")) {
+			aplicacionDb.setIcono(aplicacion.getIcono());
+		}else {
+			aplicacionDb.setIcono("http://localhost:6001/api/images/"+aplicacion.getIcono());	
+		}
+	   if(aplicacion.getApk().contains("http://localhost:6001/api/files")) {
+			aplicacionDb.setApk(aplicacion.getApk());
+		}else {
+			aplicacionDb.setApk("http://localhost:6001/api/files/"+aplicacion.getApk());	
+		}
+	
 		aplicacionDb.setCalificacion(aplicacion.getCalificacion());
 		aplicacionDb.setCategoria(aplicacion.getCategoria());
 		aplicacionDb.setDescripcion(aplicacion.getDescripcion());
-		aplicacionDb.setFechaCreacion(aplicacion.getFechaCreacion());
-		aplicacionDb.setIcono(aplicacion.getIcono());
+		aplicacionDb.setFechaCreacion(aplicacionDb.getFechaCreacion());
+
 		aplicacionDb.setNombre(aplicacion.getNombre());
 		aplicacionDb.setPaquete(aplicacion.getPaquete());
 		aplicacionDb.setRecomendada(aplicacion.isRecomendada());

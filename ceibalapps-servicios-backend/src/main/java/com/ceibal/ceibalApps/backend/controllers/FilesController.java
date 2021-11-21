@@ -23,6 +23,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import com.ceibal.ceibalApps.backend.message.ResponseMessage;
 import com.ceibal.ceibalApps.backend.models.entity.FileInfo;
@@ -38,7 +40,19 @@ public class FilesController {
 
 	@PostMapping("/api/files/upload")
 	public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file) {
+
 		String message = "";
+		Resource previousFile = null;
+		try {
+		previousFile = storageService.load(file.getOriginalFilename());
+		}catch (Exception e) {
+			
+		}
+		
+		if(previousFile != null) {
+			message = "Ya existe el archivo: " + file.getOriginalFilename();
+			return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
+		}else {
 		try {
 			storageService.save(file);
 
@@ -47,6 +61,7 @@ public class FilesController {
 		} catch (Exception e) {
 			message = "Could not upload the file: " + file.getOriginalFilename() + "!";
 			return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessage(message));
+		}
 		}
 	}
 

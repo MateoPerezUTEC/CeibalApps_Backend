@@ -46,7 +46,11 @@ public class NoticiaController {
 	public Noticia crear(@RequestBody Noticia noticia) {
 		Date now = new Date();
 		   noticia.setFechaCreacion(now);
-		   noticia.setBanner("http://localhost:6001/api/images/"+noticia.getBanner());
+		   if(noticia.getBanner().contains("http://localhost:6001/api/images")) {
+				noticia.setBanner(noticia.getBanner());
+			}else {
+				noticia.setBanner("http://localhost:6001/api/images/"+noticia.getBanner());	
+			}
 		return noticiaService.save(noticia);
 		
 	}
@@ -55,8 +59,12 @@ public class NoticiaController {
 	@ResponseStatus(HttpStatus.CREATED)
 	public Noticia editar(@RequestBody Noticia noticia, @PathVariable Long id) {
 		Noticia noticiaDb = noticiaService.findById(id);
-		noticiaDb.setBanner(noticia.getBanner());
-		noticiaDb.setFechaCreacion(noticia.getFechaCreacion());
+		if(noticia.getBanner().contains("http://localhost:6001/api/images")) {
+			noticiaDb.setBanner(noticia.getBanner());
+		}else {
+			noticiaDb.setBanner("http://localhost:6001/api/images/"+noticia.getBanner());	
+		}
+		noticiaDb.setFechaCreacion(noticiaDb.getFechaCreacion());
 		noticiaDb.setNombre(noticia.getNombre());
 		noticiaDb.setUrlAcceso(noticia.getUrlAcceso());
 		noticiaDb.setVencimiento(noticia.getVencimiento());
