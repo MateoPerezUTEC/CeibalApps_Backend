@@ -47,20 +47,20 @@ public class AplicacionController {
 	public Aplicacion crear(@RequestBody Aplicacion aplicacion) {
 		Date now = new Date();
 		   aplicacion.setFechaCreacion(now);
-		   if(aplicacion.getBanner().contains("http://localhost:6001/api/images")) {
+		   if(aplicacion.getBanner().contains("http://ceibalappsserviciosbackend-env.eba-kppep2ke.us-east-2.elasticbeanstalk.com/api/images")) {
 				aplicacion.setBanner(aplicacion.getBanner());
 			}else {
-				aplicacion.setBanner("http://localhost:6001/api/images/"+aplicacion.getBanner());	
+				aplicacion.setBanner("http://ceibalappsserviciosbackend-env.eba-kppep2ke.us-east-2.elasticbeanstalk.com/api/images/"+aplicacion.getBanner());	
 			}
-		   if(aplicacion.getIcono().contains("http://localhost:6001/api/images")) {
+		   if(aplicacion.getIcono().contains("http://ceibalappsserviciosbackend-env.eba-kppep2ke.us-east-2.elasticbeanstalk.com/api/images")) {
 				aplicacion.setIcono(aplicacion.getIcono());
 			}else {
-				aplicacion.setIcono("http://localhost:6001/api/images/"+aplicacion.getIcono());	
+				aplicacion.setIcono("http://ceibalappsserviciosbackend-env.eba-kppep2ke.us-east-2.elasticbeanstalk.com/api/images/"+aplicacion.getIcono());	
 			}
-		   if(aplicacion.getApk().contains("http://localhost:6001/api/files")) {
+		   if(aplicacion.getApk().contains("http://ceibalappsserviciosbackend-env.eba-kppep2ke.us-east-2.elasticbeanstalk.com/api/files")) {
 				aplicacion.setApk(aplicacion.getApk());
 			}else {
-				aplicacion.setApk("http://localhost:6001/api/files/"+aplicacion.getApk());	
+				aplicacion.setApk("http://ceibalappsserviciosbackend-env.eba-kppep2ke.us-east-2.elasticbeanstalk.com/api/files/"+aplicacion.getApk());	
 			}
 		return aplicacionService.save(aplicacion);
 		
@@ -70,20 +70,20 @@ public class AplicacionController {
 	@ResponseStatus(HttpStatus.CREATED)
 	public Aplicacion editar(@RequestBody Aplicacion aplicacion, @PathVariable Long id) {
 		Aplicacion aplicacionDb = aplicacionService.findById(id);
-		if(aplicacion.getBanner().contains("http://localhost:6001/api/images")) {
+		if(aplicacion.getBanner().contains("http://ceibalappsserviciosbackend-env.eba-kppep2ke.us-east-2.elasticbeanstalk.com/api/images")) {
 			aplicacionDb.setBanner(aplicacion.getBanner());
 		}else {
-			aplicacionDb.setBanner("http://localhost:6001/api/images/"+aplicacion.getBanner());	
+			aplicacionDb.setBanner("http://ceibalappsserviciosbackend-env.eba-kppep2ke.us-east-2.elasticbeanstalk.com/api/images/"+aplicacion.getBanner());	
 		}
-	   if(aplicacion.getIcono().contains("http://localhost:6001/api/images")) {
+	   if(aplicacion.getIcono().contains("http://ceibalappsserviciosbackend-env.eba-kppep2ke.us-east-2.elasticbeanstalk.com/api/images")) {
 			aplicacionDb.setIcono(aplicacion.getIcono());
 		}else {
-			aplicacionDb.setIcono("http://localhost:6001/api/images/"+aplicacion.getIcono());	
+			aplicacionDb.setIcono("http://ceibalappsserviciosbackend-env.eba-kppep2ke.us-east-2.elasticbeanstalk.com/api/images/"+aplicacion.getIcono());	
 		}
-	   if(aplicacion.getApk().contains("http://localhost:6001/api/files")) {
+	   if(aplicacion.getApk().contains("http://ceibalappsserviciosbackend-env.eba-kppep2ke.us-east-2.elasticbeanstalk.com/api/files")) {
 			aplicacionDb.setApk(aplicacion.getApk());
 		}else {
-			aplicacionDb.setApk("http://localhost:6001/api/files/"+aplicacion.getApk());	
+			aplicacionDb.setApk("http://ceibalappsserviciosbackend-env.eba-kppep2ke.us-east-2.elasticbeanstalk.com/api/files/"+aplicacion.getApk());	
 		}
 	
 		aplicacionDb.setCalificacion(aplicacion.getCalificacion());

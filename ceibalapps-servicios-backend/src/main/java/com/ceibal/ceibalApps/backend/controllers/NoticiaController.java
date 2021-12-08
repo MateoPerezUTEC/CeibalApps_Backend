@@ -46,10 +46,10 @@ public class NoticiaController {
 	public Noticia crear(@RequestBody Noticia noticia) {
 		Date now = new Date();
 		   noticia.setFechaCreacion(now);
-		   if(noticia.getBanner().contains("http://localhost:6001/api/images")) {
+		   if(noticia.getBanner().contains("http://ceibalappsserviciosbackend-env.eba-kppep2ke.us-east-2.elasticbeanstalk.com/api/images")) {
 				noticia.setBanner(noticia.getBanner());
 			}else {
-				noticia.setBanner("http://localhost:6001/api/images/"+noticia.getBanner());	
+				noticia.setBanner("http://ceibalappsserviciosbackend-env.eba-kppep2ke.us-east-2.elasticbeanstalk.com/api/images/"+noticia.getBanner());	
 			}
 		return noticiaService.save(noticia);
 		
@@ -59,10 +59,10 @@ public class NoticiaController {
 	@ResponseStatus(HttpStatus.CREATED)
 	public Noticia editar(@RequestBody Noticia noticia, @PathVariable Long id) {
 		Noticia noticiaDb = noticiaService.findById(id);
-		if(noticia.getBanner().contains("http://localhost:6001/api/images")) {
+		if(noticia.getBanner().contains("http://ceibalappsserviciosbackend-env.eba-kppep2ke.us-east-2.elasticbeanstalk.com/api/images")) {
 			noticiaDb.setBanner(noticia.getBanner());
 		}else {
-			noticiaDb.setBanner("http://localhost:6001/api/images/"+noticia.getBanner());	
+			noticiaDb.setBanner("http://ceibalappsserviciosbackend-env.eba-kppep2ke.us-east-2.elasticbeanstalk.com/api/images/"+noticia.getBanner());	
 		}
 		noticiaDb.setFechaCreacion(noticiaDb.getFechaCreacion());
 		noticiaDb.setNombre(noticia.getNombre());
